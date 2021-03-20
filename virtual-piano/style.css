@@ -94,9 +94,6 @@ body {
 	transition: 0.3s;
 	cursor: pointer;
 }
-.piano-key:hover {
-	background-color: #fff;
-}
 .keys-sharp {
 	position: absolute;
 	top: 0;
@@ -106,6 +103,9 @@ body {
 	display: flex;
 	justify-content: space-between;
 	pointer-events: none;
+}
+.active {
+	background-color: #00c9b7;
 }
 .piano-key.sharp {
 	width: 54px;
