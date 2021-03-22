@@ -31,11 +31,6 @@ function play(audioBuffer, context) {
  ////////////////////My code
 const collection = document.querySelectorAll(".piano-key")
 
-// collection.forEach((elem) => {
-//     elem.addEventListener("click", (event) => {
-//         event.target.classList.add("active")
-//     })
-// });
 const addActive = (event) => {
     event.target.classList.add("active");
 }
@@ -60,3 +55,38 @@ const stoptMouseover = (event) => {
 
 piano.addEventListener("mousedown", startMouseover);  
 piano.addEventListener("mouseup", stoptMouseover);
+
+/*full screen */
+const fullScreen = document.querySelector(".fullscreen");
+
+fullScreen.addEventListener("click", toggleFullScreen);
+
+function toggleFullScreen () {
+    if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen();
+    } else {
+        if (document.fullscreenEnabled) {
+            document.exitFullscreen();  
+        }
+    }
+}
+
+/* active piano button when we push correct letter */
+    window.addEventListener("keydown", letterSound);
+    window.addEventListener("keyup", removeLettersAnimation);
+    function letterSound(e) {
+        const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+        const pianoKey = document.querySelector(`.piano-key[data-key="${e.keyCode}"]`);
+        if(!audio) return;
+        audio.play();
+        audio.currentTime = 0;
+        pianoKey.classList.add("active");
+        
+    }
+    
+    function removeLettersAnimation(e) {
+        const pianoKey = document.querySelector(`.piano-key[data-key="${e.keyCode}"]`);
+        pianoKey.classList.remove("active");
+    }
+
+    
