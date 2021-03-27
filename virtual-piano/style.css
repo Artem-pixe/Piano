@@ -93,9 +93,7 @@ body {
 	border-radius: 0px 0px 12px 12px;
 	transition: 0.3s;
 	cursor: pointer;
-}
-.piano-key:hover {
-	background-color: #fff;
+	box-shadow: 0 9px #999;
 }
 .keys-sharp {
 	position: absolute;
@@ -106,6 +104,11 @@ body {
 	display: flex;
 	justify-content: space-between;
 	pointer-events: none;
+}
+.active {
+	background-color: #00c9b7;
+	box-shadow: 0 5px #666;
+	transform: translateY(4px);
 }
 .piano-key.sharp {
 	width: 54px;
@@ -123,6 +126,7 @@ body {
 	transform: scale(0.96);
 }
 .piano-key.none {
+	box-shadow: none;
 	background-color: transparent;
 	border: 0;
 	border-radius: 0;
@@ -153,6 +157,8 @@ body {
 
 .sharp:active {
 	border-top: 0;
+	box-shadow: 0 5px #666;
+	transform: translateY(4px);
 }
 
 .piano-key.sharp::before,
